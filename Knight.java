@@ -30,7 +30,7 @@ public class Knight {
     public int[][] generateCoordinates() {
         Vector<int[]> vector = new Vector<>();
         int indexOne = numbers.indexOf(position.split("")[1]);
-        int indexTwo = letters.indexOf(position.split("")[0]);
+        int indexTwo = letters.indexOf(position.toLowerCase().split("")[0]);
 
         int[] topLeft = { indexOne - 2, indexTwo - 1 };
         int[] topRight = { indexOne - 2, indexTwo + 1 };
