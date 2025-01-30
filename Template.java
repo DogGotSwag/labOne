@@ -30,7 +30,7 @@ public class Template {  //change class name
     public int[][] generateCoordinates() {
         Vector<int[]> vector = new Vector<>();
         int indexOne = numbers.indexOf(position.split("")[1]);
-        int indexTwo = letters.indexOf(position.toLowerCase().split("")[0]);
+        int indexTwo = letters.indexOf(position.split("")[0]);
         // use vector.add() to add individual coordinate arrays into vector
         // see Knight.java to see it in action  
         //u can use inbounds method to check if a coordinate is valid
@@ -44,8 +44,8 @@ public class Template {  //change class name
 
     //constructor
     public Template(String color, String position) { //change to class name
-        this.color = color;
-        this.position = position;
+        this.color = color.toLowerCase();
+        this.position = position.toLowerCase();
         this.availableCoordinates = generateCoordinates();
     }
 
