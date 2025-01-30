@@ -32,7 +32,8 @@ public class Template {  //change class name
         int indexOne = numbers.indexOf(position.split("")[1]);
         int indexTwo = letters.indexOf(position.split("")[0]);
         // use vector.add() to add individual coordinate arrays into vector
-        // see Knight.java to see it in action
+        // see Knight.java to see it in action  
+        //u can use inbounds method to check if a coordinate is valid
 
         /*
          * code here :]
