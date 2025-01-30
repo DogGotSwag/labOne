@@ -69,14 +69,4 @@ public class Knight {
         this.position = position;
         this.availableCoordinates = generateCoordinates();
     }
-
-    public static void main(String[] args) {
-        Knight test = new Knight("red", "g8");
-        System.out.println(test.color);
-        System.out.println(test.position);
-        int[][] arr = test.availableCoordinates;
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i][0] + ", " + arr[i][1]);
-        }
-    }
 }
