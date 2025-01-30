@@ -1,10 +1,22 @@
+import java.util.Vector;
+
 public class Knight {
     public String color;
     public int[] translatedArrayPosition = new int[2];
     public String letters = "abcdefgh";
     public String numbers = "87654321";
 
+    public boolean inBounds(int[] coordinate){
+        int indexOne = coordinate[0];
+        int indexTwo = coordinate[1];
+        if(indexOne < 0 || indexOne > 7) return false;
+        if(indexTwo < 0 || indexTwo > 7) return false;
+        return true;
+    }
+
     public void generateCoordinates() {
+
+        // Vector<int[]> vector = new Vector<>();
 
         int indexOne = translatedArrayPosition[0];
         int indexTwo = translatedArrayPosition[1];
@@ -20,6 +32,8 @@ public class Knight {
 
         int[] bottomLeft = { indexOne + 2, indexTwo - 1 };
         int[] bottomRight = { indexOne + 2, indexTwo + 1 };
+
+       
 
     }
 
