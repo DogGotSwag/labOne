@@ -4,18 +4,24 @@ public class Knight {
     public String letters = "abcdefgh";
     public String numbers = "87654321";
 
-    // public void generateCoordinates(){
+    public void generateCoordinates() {
 
-    //     int indexOne = translatedArrayPosition[0];
-    //     int indexTwo = translatedArrayPosition[1];
+        int indexOne = translatedArrayPosition[0];
+        int indexTwo = translatedArrayPosition[1];
 
-    //     System.out.println(indexOne);
+        int[] topLeft = { indexOne - 2, indexTwo - 1 };
+        int[] topRight = { indexOne - 2, indexTwo + 1 };
 
-    //     int[] topOne = {indexOne, indexTwo};
-    //     System.out.print(topOne[0]+", ");
-    //     System.out.print(topOne[1]);
-    //     System.out.println();
-    // }
+        int[] leftTop = { indexOne - 1, indexTwo - 2 };
+        int[] leftBottom = { indexOne + 1, indexTwo - 2 };
+
+        int[] rightTop = { indexOne - 1, indexTwo + 2 };
+        int[] rightBottom = { indexOne + 1, indexTwo + 2 };
+
+        int[] bottomLeft = { indexOne + 2, indexTwo - 1 };
+        int[] bottomRight = { indexOne + 2, indexTwo + 1 };
+
+    }
 
     public Knight(String color, String position) {
         this.color = color;
