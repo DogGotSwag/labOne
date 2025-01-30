@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -78,10 +80,11 @@ public class Knight {
 
     public static void main(String[] args) {
         Knight test = new Knight("red", "g8");
-        int[][] arr = test.generateCoordinates();
-
+        System.out.println(test.color);
+        System.out.println(test.position);
+        int[][] arr = test.availableCoordinates;
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i][0] + ", " + arr[i][1]);
+            System.out.println(arr[i][0]+", "+arr[i][1]);
         }
     }
 }
