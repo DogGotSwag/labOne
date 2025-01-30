@@ -28,14 +28,9 @@ public class Knight {
     }
 
     public int[][] generateCoordinates() {
-        int[] translatedArrayPosition = new int[2];
-        translatedArrayPosition[1] = letters.indexOf(position.split("")[0]);
-        translatedArrayPosition[0] = numbers.indexOf(position.split("")[1]);
-
         Vector<int[]> vector = new Vector<>();
-
-        int indexOne = translatedArrayPosition[0];
-        int indexTwo = translatedArrayPosition[1];
+        int indexOne = numbers.indexOf(position.split("")[1]);
+        int indexTwo = letters.indexOf(position.split("")[0]);
 
         int[] topLeft = { indexOne - 2, indexTwo - 1 };
         int[] topRight = { indexOne - 2, indexTwo + 1 };
@@ -81,7 +76,7 @@ public class Knight {
         System.out.println(test.position);
         int[][] arr = test.availableCoordinates;
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i][0]+", "+arr[i][1]);
+            System.out.println(arr[i][0] + ", " + arr[i][1]);
         }
     }
 }
