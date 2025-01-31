@@ -29,8 +29,8 @@ public class Template {  //change class name
 
     public int[][] generateCoordinates() {
         Vector<int[]> vector = new Vector<>();
-        int indexOne = numbers.indexOf(position.split("")[1]);
-        int indexTwo = letters.indexOf(position.split("")[0]);
+        int rows = numbers.indexOf(position.split("")[1]);
+        int cols = letters.indexOf(position.split("")[0]);
         // use vector.add() to add individual coordinate arrays into vector
         // see Knight.java to see it in action  
         //u can use inbounds method to check if a coordinate is valid
