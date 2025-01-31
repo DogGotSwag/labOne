@@ -29,20 +29,20 @@ public class Knight {
 
     public int[][] generateCoordinates() {
         Vector<int[]> vector = new Vector<>();
-        int indexOne = numbers.indexOf(position.split("")[1]);
-        int indexTwo = letters.indexOf(position.split("")[0]);
+        int rows = numbers.indexOf(position.split("")[1]);
+        int cols = letters.indexOf(position.split("")[0]);
 
-        int[] topLeft = { indexOne - 2, indexTwo - 1 };
-        int[] topRight = { indexOne - 2, indexTwo + 1 };
+        int[] topLeft = { rows - 2, cols - 1 };
+        int[] topRight = { rows - 2, cols + 1 };
 
-        int[] leftTop = { indexOne - 1, indexTwo - 2 };
-        int[] leftBottom = { indexOne + 1, indexTwo - 2 };
+        int[] leftTop = { rows - 1, cols - 2 };
+        int[] leftBottom = { rows + 1, cols - 2 };
 
-        int[] rightTop = { indexOne - 1, indexTwo + 2 };
-        int[] rightBottom = { indexOne + 1, indexTwo + 2 };
+        int[] rightTop = { rows - 1, cols + 2 };
+        int[] rightBottom = { rows + 1, cols + 2 };
 
-        int[] bottomLeft = { indexOne + 2, indexTwo - 1 };
-        int[] bottomRight = { indexOne + 2, indexTwo + 1 };
+        int[] bottomLeft = { rows + 2, cols - 1 };
+        int[] bottomRight = { rows + 2, cols + 1 };
 
         if (inBounds(topLeft) == true)
             vector.add(topLeft);
@@ -68,5 +68,13 @@ public class Knight {
         this.color = color.toLowerCase();
         this.position = position.toLowerCase();
         this.availableCoordinates = generateCoordinates();
+    }
+
+    public static void main(String[] args) {
+        Knight test = new Knight("red", "g1"); // change to class name
+        int[][] arr = test.availableCoordinates;
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i][0] + ", " + arr[i][1]);
+        }
     }
 }
