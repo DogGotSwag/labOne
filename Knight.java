@@ -1,5 +1,7 @@
 import java.util.Vector;
 
+//Author: Didier A.L
+
 public class Knight {
     public String color;
     public String position;
