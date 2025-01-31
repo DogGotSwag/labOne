@@ -5,9 +5,6 @@ public class King { // change class name
     public String position;
     public int[][] availableCoordinates;
 
-    public String letters = "abcdefgh";
-    public String numbers = "87654321";
-
     public boolean inBounds(int[] coordinate) {
         int indexOne = coordinate[0];
         int indexTwo = coordinate[1];
@@ -29,6 +26,9 @@ public class King { // change class name
 
     public int[][] generateCoordinates() {
         Vector<int[]> vector = new Vector<>();
+        String letters = "abcdefgh";
+        String numbers = "87654321";
+
         int rows = numbers.indexOf(position.split("")[1]);
         int cols = letters.indexOf(position.split("")[0]);
 
