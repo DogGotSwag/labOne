@@ -2,7 +2,7 @@ import java.util.Vector;
 
 //Author: Didier A.L
 
-public class Queen { // change class name
+public class Queen {
     public String color;
     public String position;
     public int[][] availableCoordinates;
@@ -34,9 +34,6 @@ public class Queen { // change class name
 
         int rows = numbers.indexOf(position.split("")[1]);
         int cols = letters.indexOf(position.split("")[0]);
-        // use vector.add() to add individual coordinate arrays into vector
-        // see Knight.java to see it in action
-        // u can use inbounds method to check if a coordinate is valid
 
         for (int i = cols - 1; i >= 0; i -= 1) {
             int[] left = { rows, i };
@@ -54,19 +51,54 @@ public class Queen { // change class name
             int[] down = { i, cols };
             vector.add(down);
         }
+
+        int copyRows = rows - 1;
+        int copyCols = cols + 1;
+        while (copyRows >= 0 && copyCols <= 7) {
+            int[] topRight = { copyRows, copyCols };
+            vector.add(topRight);
+            copyRows -= 1;
+            copyCols += 1;
+        }
+
+        copyRows = rows - 1;
+        copyCols = cols - 1;
+        while (copyRows >= 0 && copyCols >= 0) {
+            int[] topLeft = { copyRows, copyCols };
+            vector.add(topLeft);
+            copyRows -= 1;
+            copyCols -= 1;
+        }
+
+        copyRows = rows + 1;
+        copyCols = cols - 1;
+        while (copyRows <= 7 && copyCols >= 0) {
+            int[] bottomLeft = { copyRows, copyCols };
+            vector.add(bottomLeft);
+            copyRows += 1;
+            copyCols -= 1;
+        }
+
+        copyRows = rows + 1;
+        copyCols = cols + 1;
+        while (copyRows <= 7 && copyCols <= 7) {
+            int[] bottomRight = { copyRows, copyCols };
+            vector.add(bottomRight);
+            copyRows += 1;
+            copyCols += 1;
+        }
+
         return vectorToArray(vector);
     }
 
-    // constructor
-    public Queen(String color, String position) { // change to class name
+    public Queen(String color, String position) {
         this.color = color.toLowerCase();
         this.position = position.toLowerCase();
         this.availableCoordinates = generateCoordinates();
     }
 
-    // main will be used test your available coordinates output
     public static void main(String[] args) {
-        Queen test = new Queen("red", "e4"); // change to class name
+        Queen test = new Queen("red", "e4");
         // System.out.println(test.color);
         // System.out.println(test.position);
         int[][] arr = test.availableCoordinates;
