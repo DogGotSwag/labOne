@@ -35,6 +35,7 @@ public class Queen {
         int rows = numbers.indexOf(position.split("")[1]);
         int cols = letters.indexOf(position.split("")[0]);
 
+        //up down left right
         for (int i = cols - 1; i >= 0; i -= 1) {
             int[] left = { rows, i };
             vector.add(left);
@@ -52,6 +53,7 @@ public class Queen {
             vector.add(down);
         }
 
+        //diagonal movement
         int copyRows = rows - 1;
         int copyCols = cols + 1;
         while (copyRows >= 0 && copyCols <= 7) {
