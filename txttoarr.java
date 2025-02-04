@@ -45,6 +45,7 @@ public class txttoarr {
             // System.out.println("--------");
 
             Piece temp = new Piece("white", "E4" );
+            // temp.availableCoordinates = method();
             
         }
 
