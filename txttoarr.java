@@ -151,6 +151,113 @@ public class txttoarr {
        
     }
 
+    public static int[][] generateKnightCoordinates(String position) {
+        Vector<int[]> vector = new Vector<>();
+        String letters = "abcdefgh";
+        String numbers = "87654321";
+
+        int rows = numbers.indexOf(position.split("")[1]);
+        int cols = letters.indexOf(position.split("")[0]);
+
+        int[] topLeft = { rows - 2, cols - 1 };
+        int[] topRight = { rows - 2, cols + 1 };
+
+        int[] leftTop = { rows - 1, cols - 2 };
+        int[] leftBottom = { rows + 1, cols - 2 };
+
+        int[] rightTop = { rows - 1, cols + 2 };
+        int[] rightBottom = { rows + 1, cols + 2 };
+
+        int[] bottomLeft = { rows + 2, cols - 1 };
+        int[] bottomRight = { rows + 2, cols + 1 };
+
+        if (inBounds(topLeft) == true)
+            vector.add(topLeft);
+        if (inBounds(topRight) == true)
+            vector.add(topRight);
+        if (inBounds(leftTop) == true)
+            vector.add(leftTop);
+        if (inBounds(leftBottom) == true)
+            vector.add(leftBottom);
+        if (inBounds(rightTop) == true)
+            vector.add(rightTop);
+        if (inBounds(rightBottom) == true)
+            vector.add(rightBottom);
+        if (inBounds(bottomLeft) == true)
+            vector.add(bottomLeft);
+        if (inBounds(bottomRight) == true)
+            vector.add(bottomRight);
+
+        return vectorToArray(vector);
+    }
+
+    public static int[][] generateQueenCoordinates(String position) {
+        Vector<int[]> vector = new Vector<>();
+
+        String letters = "abcdefgh";
+        String numbers = "87654321";
+
+        int rows = numbers.indexOf(position.split("")[1]);
+        int cols = letters.indexOf(position.split("")[0]);
+
+        //up down left right
+        for (int i = cols - 1; i >= 0; i -= 1) {
+            int[] left = { rows, i };
+            vector.add(left);
+        }
+        for (int i = cols + 1; i <= 7; i += 1) {
+            int[] right = { rows, i };
+            vector.add(right);
+        }
+        for (int i = rows - 1; i >= 0; i -= 1) {
+            int[] up = { i, cols };
+            vector.add(up);
+        }
+        for (int i = rows + 1; i <= 7; i += 1) {
+            int[] down = { i, cols };
+            vector.add(down);
+        }
+
+        //diagonal movement
+        int copyRows = rows - 1;
+        int copyCols = cols + 1;
+        while (copyRows >= 0 && copyCols <= 7) {
+            int[] topRight = { copyRows, copyCols };
+            vector.add(topRight);
+            copyRows -= 1;
+            copyCols += 1;
+        }
+
+        copyRows = rows - 1;
+        copyCols = cols - 1;
+        while (copyRows >= 0 && copyCols >= 0) {
+            int[] topLeft = { copyRows, copyCols };
+            vector.add(topLeft);
+            copyRows -= 1;
+            copyCols -= 1;
+        }
+
+        copyRows = rows + 1;
+        copyCols = cols - 1;
+        while (copyRows <= 7 && copyCols >= 0) {
+            int[] bottomLeft = { copyRows, copyCols };
+            vector.add(bottomLeft);
+            copyRows += 1;
+            copyCols -= 1;
+        }
+
+        copyRows = rows + 1;
+        copyCols = cols + 1;
+        while (copyRows <= 7 && copyCols <= 7) {
+            int[] bottomRight = { copyRows, copyCols };
+            vector.add(bottomRight);
+            copyRows += 1;
+            copyCols += 1;
+        }
+
+        return vectorToArray(vector);
+    }
+
     public static void main (String [] args) throws Exception {
 
         File Pieces = new File ("./input.txt");
@@ -177,8 +284,8 @@ public class txttoarr {
             // System.out.println(position);
             // System.out.println("--------");
 
-            Piece temp = new Piece("white", "e4" );
-            temp.availableCoordinates = generateRookCoordinates(temp.position);
+            Piece temp = new Piece("white", "g1" );
+            temp.availableCoordinates = generateKnightCoordinates(temp.position);
 
             for(int j = 0; j < temp.availableCoordinates.length; j+=1){
                 System.out.print(temp.availableCoordinates[j][0]+",");
