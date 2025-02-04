@@ -258,6 +258,45 @@ public class txttoarr {
         return vectorToArray(vector);
     }
 
+    public int[][] generateKingCoordinates(String position) {
+        Vector<int[]> vector = new Vector<>();
+        String letters = "abcdefgh";
+        String numbers = "87654321";
+
+        int rows = numbers.indexOf(position.split("")[1]);
+        int cols = letters.indexOf(position.split("")[0]);
+
+        int[] top = { rows - 1, cols };
+        int[] topLeft = { rows - 1, cols - 1 };
+        int[] topRight = { rows - 1, cols + 1 };
+
+        int[] left = { rows, cols - 1 };
+        int[] right = { rows, cols + 1 };
+
+        int[] bottom = { rows + 1, cols };
+        int[] bottomLeft = { rows + 1, cols - 1 };
+        int[] bottomRight = { rows + 1, cols + 1 };
+
+        if (inBounds(top))
+            vector.add(top);
+        if (inBounds(topLeft))
+            vector.add(topLeft);
+        if (inBounds(topRight))
+            vector.add(topRight);
+        if (inBounds(left))
+            vector.add(left);
+        if (inBounds(right))
+            vector.add(right);
+        if (inBounds(bottom))
+            vector.add(bottom);
+        if (inBounds(bottomLeft))
+            vector.add(bottomLeft);
+        if (inBounds(bottomRight))
+            vector.add(bottomRight);
+
+        return vectorToArray(vector);
+    }
+
     public static void main (String [] args) throws Exception {
 
         File Pieces = new File ("./input.txt");
