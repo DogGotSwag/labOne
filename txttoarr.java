@@ -124,6 +124,33 @@ public class txttoarr {
         return vectorToArray(vector);
     }
 
+    public static int[][] generateRookCoordinates(String position) {
+        Vector<int[]> vector = new Vector<>();
+        int rookRow = rows.indexOf(position.split("")[1]);
+        int rookCol = columns.indexOf(position.split("")[0]);
+        //uses a for loop to generate horizontal moves
+          for(int i=0; i<8; i++){
+              if(i!=rookCol){
+                  int[]coordinate={rookRow,i};
+                  if(inBounds(coordinate)){
+                      vector.add(coordinate);
+                  }
+              }
+          }  
+        //same loop but for vertical moves
+        for(int i=0; i<8; i++){
+              if(i!=rookRow){
+                  int[]coordinate={i,rookCol};
+                  if(inBounds(coordinate)){
+                      vector.add(coordinate);
+                  }
+              }
+          }  
+       
+        return vectorToArray(vector);
+       
+    }
+
     public static void main (String [] args) throws Exception {
 
         File Pieces = new File ("./input.txt");
@@ -150,8 +177,8 @@ public class txttoarr {
             // System.out.println(position);
             // System.out.println("--------");
 
-            Piece temp = new Piece("white", "a1" );
-            temp.availableCoordinates = generateBishopCoordinates(temp.position);
+            Piece temp = new Piece("white", "e4" );
+            temp.availableCoordinates = generateRookCoordinates(temp.position);
 
             for(int j = 0; j < temp.availableCoordinates.length; j+=1){
                 System.out.print(temp.availableCoordinates[j][0]+",");
