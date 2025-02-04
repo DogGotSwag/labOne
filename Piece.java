@@ -17,6 +17,10 @@ public class Piece {
 }
 
 public class txttoarr {
+
+    public String columns = "abcdefgh";
+    public String rows = "87654321";
+    
     public boolean inBounds(int[] coordinate) {
         int indexOne = coordinate[0];
         int indexTwo = coordinate[1];
@@ -34,6 +38,82 @@ public class txttoarr {
             newArray[i] = curr;
         }
         return newArray;
+    }
+
+    public int[][] generateBishopCoordinates(String position) {
+        Vector<int[]> vector = new Vector<>();
+        int indexOne = rows.indexOf(position.split("")[1]);
+        int indexTwo = columns.indexOf(position.split("")[0]);
+        // use vector.add() to add individual coordinate arrays into vector
+        // see Knight.java to see it in action  
+        //u can use inbounds method to check if a coordinate is valid
+
+        /*
+         * code here :]
+         * happy coding
+         */
+        
+        //Top Left
+        int x = indexOne;
+        int y = indexTwo;
+
+        while (x >= 0 && x <= 7 && y >= 0 && y <= 7) {
+            x = x + 1;
+            y = y - 1;
+
+            int [] topLeft = {x, y};
+
+            if (inBounds(topLeft) == true)
+            vector.add(topLeft);
+
+        }
+
+        //Top Right
+        x = indexOne;
+        y = indexTwo;
+
+        while (x >= 0 && x <= 7 && y >= 0 && y <= 7) {
+            x = x + 1;
+            y = y + 1;
+
+            int [] topRight = {x, y};
+
+            if (inBounds(topRight) == true)
+            vector.add(topRight);
+
+        }
+
+        //Bottom Left
+        x = indexOne;
+        y = indexTwo;
+
+        while (x >= 0 && x <= 7 && y >= 0 && y <= 7) {
+            x = x - 1;
+            y = y - 1;
+
+            int [] bottomLeft = {x, y};
+
+            if (inBounds(bottomLeft) == true)
+            vector.add(bottomLeft);
+
+        }
+
+        //Bottom Right
+        x = indexOne;
+        y = indexTwo;
+
+        while (x >= 0 && x <= 7 && y >= 0 && y <= 7) {
+            x = x - 1;
+            y = y + 1;
+
+            int [] bottomRight = {x, y};
+
+            if (inBounds(bottomRight) == true)
+            vector.add(bottomRight);
+
+        }
+
+        return vectorToArray(vector);
     }
 
     public static void main (String [] args) throws Exception {
@@ -63,7 +143,7 @@ public class txttoarr {
             // System.out.println("--------");
 
             Piece temp = new Piece("white", "E4" );
-            // temp.availableCoordinates = method();
+            // temp.availableCoordinates = method(temp.position);
             
         }
 
