@@ -105,6 +105,25 @@ public class txttoarr {
         return vectorToArray(vector);
     }
 
+    public static int[][] generatePawnCoordinates(String position, String color) {
+        Vector<int[]> vector = new Vector<>();
+        String col = "abcdefgh";
+        String row = "87654321";
+
+        int rows = row.indexOf(position.charAt(1));
+        int cols = col.indexOf(position.charAt(0));
+
+        int direction = (color.equals("white")) ? -1 : 1;
+
+        // Forward move
+        int[] forwardMove = { rows + direction, cols };
+        if (inBounds(forwardMove)) {
+            vector.add(forwardMove);
+        }
+
+        return vectorToArray(vector);
+    }
+
     public static void main (String [] args) throws Exception {
 
         File Pieces = new File ("./input.txt");
@@ -121,7 +140,7 @@ public class txttoarr {
         // String attackPosition = getCoordinate.nextLine();
 
 
-        for (int i = 0; i < vector.size(); i++) {
+        for (int i = 0; i < 1; i++) {
             // String[] info = vector.get(i).split(", ");
             // String type = info[0];
             // String color = info[1];
@@ -131,8 +150,14 @@ public class txttoarr {
             // System.out.println(position);
             // System.out.println("--------");
 
-            Piece temp = new Piece("white", "E4" );
+            Piece temp = new Piece("white", "a1" );
             temp.availableCoordinates = generateBishopCoordinates(temp.position);
+
+            for(int j = 0; j < temp.availableCoordinates.length; j+=1){
+                System.out.print(temp.availableCoordinates[j][0]+",");
+                System.out.print(temp.availableCoordinates[j][1]);
+                System.out.println("");
+            }
             
         }
 
