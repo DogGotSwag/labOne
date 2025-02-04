@@ -17,6 +17,24 @@ public class Piece {
 }
 
 public class txttoarr {
+    public boolean inBounds(int[] coordinate) {
+        int indexOne = coordinate[0];
+        int indexTwo = coordinate[1];
+        if (indexOne < 0 || indexOne > 7)
+            return false;
+        if (indexTwo < 0 || indexTwo > 7)
+            return false;
+        return true;
+    }
+
+    public int[][] vectorToArray(Vector<int[]> vector) {
+        int[][] newArray = new int[vector.size()][2];
+        for (int i = 0; i < vector.size(); i += 1) {
+            int[] curr = { vector.get(i)[0], vector.get(i)[1] };
+            newArray[i] = curr;
+        }
+        return newArray;
+    }
 
     public static void main (String [] args) throws Exception {
 
